@@ -78,4 +78,14 @@ export default class App extends Component {
       </div>
     );
   }
+
+  componentDidMount() {
+    if (localStorage.getItem('contacts') != null) {
+      this.setState({ contacts: JSON.parse(localStorage.getItem('contacts')) });
+    }
+  }
+
+  componentDidUpdate() {
+    localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+  }
 }
